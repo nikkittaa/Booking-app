@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const imageDownloader = require('image-downloader');
 const multer = require('multer');
 const fs = require('fs');
+const Place = require('./models/place.js');
 const app = express();
 
 
@@ -116,4 +117,38 @@ app.post('/upload', photosMiddleware.array('photos', 100) ,(req, res) => {
     }
     res.json(uploadedFiles);
 });
+
+app.post('/places', (req, res) => {
+    const {token} = req.cookies;
+    const { title, address, addedPhotos:photos, description,
+        perks, extraInfo, checkIn, checkOut, maxGuests,
+    } = req.body;
+    
+    jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
+        if(err) throw err;
+        const placeDoc = await Place.create({
+            owner: userData.id,
+            title, address,
+            photos, 
+            description,
+            perks, extraInfo, checkIn, checkOut, maxGuests,
+        });
+        res.json(placeDoc);
+    });
+});
+
+app.get('/places', (req, res) => {
+    const {token} = req.cookies;
+    jwt.verify(token, jwtSecret, {}, async (err, userData)=>{
+        if(err) throw err;
+        const {id} = userData;
+        res.json(await Place.find({owner:id}));
+    });
+});
+
+app.get('/places/:id', async (req, res) => {
+    const {id} = req.params;
+    res.json(await Place.findById(id))
+});
+
 app.listen(4000);
