@@ -18,7 +18,7 @@ const PlacesFormPage = () => {
     const [checkOut, setCheckOut] = useState('');
     const [maxGuests, setMaxGuests] = useState(1);
     const [redirect, setRedirect] = useState(false);
-    
+     
     useEffect(() => {
         if(!id){
             return;
@@ -37,14 +37,21 @@ const PlacesFormPage = () => {
             setMaxGuests(data.maxGuests);
         });
     }, [id]);
-    async function addNewPlace(ev){
+    async function savePlace(ev){
        
         ev.preventDefault();
-        const placeData = {title, address, addedPhotos, 
+
+        const placeData = { title, address, addedPhotos, 
             description, perks, extraInfo,
              checkIn, checkOut, maxGuests};
+
+        if(id){
+            await axios.put('/places', {id, ...placeData});
+            setRedirect(true);
+        }else{
         await axios.post('/places', placeData);
         setRedirect(true);
+        }
     }
     
     if(redirect){
@@ -54,7 +61,7 @@ const PlacesFormPage = () => {
   return (
     <div>
     <AccountNav/>
-        <form className = "m-4" onSubmit = {addNewPlace}>
+        <form className = "m-4" onSubmit = {savePlace}>
             <h2 className = "text-2xl mt-4">Title</h2>
             <p className = "text-gray-500 text-sm">Title/Heading for your place, should be short an catchy</p>
             <input type  = 'text' placeholder = 'title, for example: My lovely apartment' value = {title} onChange = {event => setTitle(event.target.value)}/>
