@@ -17,6 +17,7 @@ const PlacesFormPage = () => {
     const [checkIn, setCheckIn] = useState('');
     const [checkOut, setCheckOut] = useState('');
     const [maxGuests, setMaxGuests] = useState(1);
+    const [price, setPrice] = useState(1000);
     const [redirect, setRedirect] = useState(false);
      
     useEffect(() => {
@@ -35,6 +36,8 @@ const PlacesFormPage = () => {
             setCheckIn(data.checkIn);
             setCheckOut(data.checkOut);
             setMaxGuests(data.maxGuests);
+            setPrice(data.price);
+            
         });
     }, [id]);
     async function savePlace(ev){
@@ -43,7 +46,7 @@ const PlacesFormPage = () => {
 
         const placeData = { title, address, addedPhotos, 
             description, perks, extraInfo,
-             checkIn, checkOut, maxGuests};
+             checkIn, checkOut, maxGuests, price};
 
         if(id){
             await axios.put('/places', {id, ...placeData});
@@ -84,7 +87,7 @@ const PlacesFormPage = () => {
                    
                     <h2 className = "text-2xl mt-4">Check in & out times, max guests</h2>
                     <p className = "text-gray-500 text-sm mb-2">Check in and out times, remember to have the time window for cleaning the room between guests</p>
-                    <div className = "grid gap-2 sm:grid-cols-3">
+                    <div className = "grid gap-2 grid-cols-2 md:grid-cols-4">
                         <div>
                             <h3 className = "mt-2 mb-1">Check in time</h3>
                             <input type = "text" 
@@ -99,6 +102,10 @@ const PlacesFormPage = () => {
                         <div>
                             <h3 className = "mt-2 mb-1" >Maximum number of guests</h3>
                             <input type = "number" placeholder = "5" value = {maxGuests} onChange = {event => setMaxGuests(event.target.value)}/>
+                        </div>
+                        <div>
+                            <h3 className = "mt-2 mb-1" >Price per night</h3>
+                            <input type = "number" placeholder = "5" value = {price} onChange = {event => setPrice(event.target.value)}/>
                         </div>
                     </div>
                     <button className = "primary my-8">Save</button>
