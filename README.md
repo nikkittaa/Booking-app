@@ -9,12 +9,12 @@ This project is an Airbnb clone, a web application that allows users to discover
 - **User Authentication:** Users can create accounts, log in, and manage their profiles.
 - **Property Listings:** Browse and search for available properties.
 
-- ![image](https://github.com/nikkittaa/Booking-app/assets/119802510/f62682a7-43be-4e13-85d8-41b28be07f9f)
+  ![image](https://github.com/nikkittaa/Booking-app/assets/119802510/f62682a7-43be-4e13-85d8-41b28be07f9f)
 
 - **Property Details:** View detailed information about each property, including descriptions, amenities, and photos.
 
-- ![image](https://github.com/nikkittaa/Booking-app/assets/119802510/cb70c1de-c2c0-4cfd-aa37-57e4ad4700a2)
-- ![image](https://github.com/nikkittaa/Booking-app/assets/119802510/31c895b0-e925-40d7-9af4-34d082ce1127)
+ ![image](https://github.com/nikkittaa/Booking-app/assets/119802510/cb70c1de-c2c0-4cfd-aa37-57e4ad4700a2)
+ ![image](https://github.com/nikkittaa/Booking-app/assets/119802510/31c895b0-e925-40d7-9af4-34d082ce1127)
 
 
 - **Booking System:** Users can make reservations for selected properties and manage their booking history.
