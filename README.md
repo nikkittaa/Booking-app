@@ -1,8 +1,8 @@
-# Airbnb Clone
+# Booking App
 
 ## Description
 
-This project is an Airbnb clone, a web application that allows users to discover and book accommodations worldwide. It replicates the core functionality of the Airbnb platform, enabling users to search for properties, view property details, and make reservations.
+This project is a web application that allows users to discover and book accommodations worldwide. It enables users to search for properties, view property details, and make reservations.
 
 ## Features
 
@@ -40,45 +40,9 @@ This project is an Airbnb clone, a web application that allows users to discover
 - **Backend:** Node.js, Express.js, MongoDB for data storage.
 - **Authentication:** JSON Web Tokens (JWT).
 
-## Installation
 
-1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/nikkittaa/booking-app.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd booking-app
-   ```
-
-3. Install dependencies for the frontend and backend:
-
-   ```bash
-   # Install frontend dependencies
-   cd client
-   npm install
-
-   # Install backend dependencies
-   cd ../api
-   npm install
-   ```
-
-4. Set up environment variables:
-
-   - Create a `.env` file in the `server` directory with the required environment variables (e.g., MongoDB connection string).
-
-5. Start the development server:
-
-   ```bash
-   # Start the frontend server
-   cd client
-   npm run dev
-
-   # Start the backend server
-   cd ../api
+   
    nodemon index.js
    ```
 
